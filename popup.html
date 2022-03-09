@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>popup</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      padding: 10px 16px;
+      background-color: #f8f9fa;
+    }
+    .form_input {
+      width: 200px;
+      padding: 0 10px;
+      line-height: 30px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      user-select: none;
+    }
+    .form_input:focus {
+      outline: none;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .opt_btn {
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding: 4px 10px;
+      font-size: 14px;
+      color: #fff;
+      background-color: rgb(43, 110, 226);
+      border: 1px solid rgb(43, 110, 226);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .unfollow_btn {
+      color: #fff;
+      border-color: red;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>xp插件</h2>
+    <input type="text" class="form_input" id="follow_num_in" placeholder="关注前面粉丝的数量，默认100个">
+		<div class="opt_btn" id="follow_btn">关注店铺粉丝</div>
+    <input type="text" class="form_input" id="unfollow_num_in" placeholder="取关后面粉丝的数量，默认100个">
+    <div class="opt_btn unfollow_btn" id="unfollow_btn">取关</div>
+	</div>
+  <script src="js/jquery-1.8.3.js"></script>
+  <script src="js/popup.js"></script>
+</body>
+</html>

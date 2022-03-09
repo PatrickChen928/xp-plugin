@@ -1,0 +1,47 @@
+{
+	"manifest_version": 2,
+	"name": "follow-plugin",
+	"version": "0.0.1",
+	"description": "自动关注店铺粉丝插件",
+	"icons":
+	{
+		"16": "img/260.png",
+		"48": "img/260.png",
+		"128": "img/260.png"
+	},
+	"background":
+	{
+		"page": "background.html"
+	},
+	"browser_action": 
+	{
+		"default_icon": "img/260.png",
+		"default_title": "xp插件",
+		"default_popup": "popup.html"
+	},
+	"content_scripts": 
+	[
+		{
+			"matches": ["<all_urls>"],
+			"js": ["js/jquery-1.8.3.js", "js/content-script.js"],
+			"css": ["css/custom.css"],
+			"run_at": "document_start"
+		}
+	],
+	"permissions":
+	[
+		"<all_urls>",
+		"contextMenus", 
+		"tabs", 
+		"notifications",
+		"webRequest", 
+		"cookies",
+		"webRequestBlocking",
+		"storage", 
+		"http://*/*", 
+		"https://*/*"
+	],
+	// "web_accessible_resources": ["js/inject.js"],
+	"homepage_url": "https://github.com/ChpShy",
+	"omnibox": { "keyword" : "go" }
+}
