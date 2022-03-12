@@ -33,14 +33,14 @@ function getShopId() {
 }
 
 async function getFollowList(shopid) {
-	 for(let i = 0; i < 20; i++) {
-		await goFollow(i * 20, shopid);
+	 for(let i = 0; i < 10; i++) {
+		await goFollow(i * 100, shopid);
 	 }
 }
 
 function goFollow(offset, shopid) {
 	return new Promise((r, j) => {
-		$.ajax('https://shopee.tw/shop/' + shopid + '/followers/?offset=' + offset + '&limit=20&offset_of_offset=0&_=' + Date.now(), {
+		$.ajax('https://shopee.tw/shop/' + shopid + '/followers/?offset=' + offset + '&limit=100&offset_of_offset=0&_=' + Date.now(), {
     }).done(function(res) {
 			let arr = getUnfollowArr(res, true);
 			requestAll(arr, follow).then(() => {
@@ -83,7 +83,7 @@ async function requestAll(arr, request) {
 
 function getUnfollowArr(str, followFlag) {
   let arr = [];
-	str.replace(/shopid=\d+/g, '');
+	str = str.replace(/ </g, '<').replace(/\n/g, '').replace(/\t/g, '');
   $(str).find('div.btn-follow').each((_, val) => {
 		const text = $(val).text();
 		const userid = $(val).attr('shopid');
