@@ -1,0 +1,29 @@
+
+
+.btn-area {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 1000;
+}
+
+
+
+.btn-item {
+  display: inline-block;
+  padding: 0 6px;
+  line-height: 30px;
+  color: #fff;
+  background-color: rgb(24, 144, 255);
+  border-radius: 4px;
+}
+.follow-btn {
+  margin-right: 15px;
+}
+.btn-item:hover {
+  color: #fff;
+  background-color: rgb(64, 169, 255);
+}

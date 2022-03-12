@@ -1,7 +1,6 @@
 {
-	"manifest_version": 2,
 	"name": "follow-plugin",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "自动关注店铺粉丝插件",
 	"icons":
 	{
@@ -22,10 +21,13 @@
 	"content_scripts": 
 	[
 		{
-			"matches": ["<all_urls>"],
+			"matches": [
+				"*://shopee.tw/*"
+			],
+			// "matches": ["https://juejin.cn/user/835284567589496/tags"],
 			"js": ["js/jquery-1.8.3.js", "js/content-script.js"],
 			"css": ["css/custom.css"],
-			"run_at": "document_start"
+			"all_frames": false
 		}
 	],
 	"permissions":
@@ -41,7 +43,7 @@
 		"http://*/*", 
 		"https://*/*"
 	],
-	// "web_accessible_resources": ["js/inject.js"],
+	"web_accessible_resources": ["js/inject.js"],
 	"homepage_url": "https://github.com/ChpShy",
-	"omnibox": { "keyword" : "go" }
+	"manifest_version": 2
 }
