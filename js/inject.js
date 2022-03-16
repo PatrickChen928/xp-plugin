@@ -32,9 +32,9 @@ function getShopId() {
 	}
 }
 
-async function getFollowList(shopid) {
+async function getFollowList(shopid, cb) {
 	 for(let i = 0; i < 10; i++) {
-		await goFollow(i * 100, shopid);
+		await cb(i * 100, shopid);
 	 }
 }
 
@@ -52,12 +52,18 @@ function goFollow(offset, shopid) {
 	})
 }
 
-function getUnFollowList(shopid) {
-	$.ajax('https://shopee.tw/shop/' + shopid + '/following/?offset=100&limit=100&offset_of_offset=0&_=' + Date.now(), {
+function getUnFollowList(offset, shopid) {
+	return new Promise((r, j) => {
+		$.ajax('https://shopee.tw/shop/' + shopid + '/following/?offset=' + offset + '&limit=100&offset_of_offset=0&_=' + Date.now(), {
     }).done(function(res) {
 			let arr = getUnfollowArr(res, false);
-			requestAll(arr, unfollow);
+			requestAll(arr, unfollow).then(() => {
+				r();
+			}).catch(() => {
+				j();
+			})
     });
+	})
 }
 
 
@@ -151,8 +157,8 @@ window.invokeContentScript = function (type) {
 		shopId = /\/shop\/(\d+)\/follow/.exec(href)[1];
 	}
 	if (type === 'follow') {
-		getFollowList(shopId);
+		getFollowList(shopId, goFollow);
 	} else {
-		getUnFollowList(shopId);
+		getFollowList(shopId, );
 	}
 }
