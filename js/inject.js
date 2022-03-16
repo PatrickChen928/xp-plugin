@@ -159,6 +159,6 @@ window.invokeContentScript = function (type) {
 	if (type === 'follow') {
 		getFollowList(shopId, goFollow);
 	} else {
-		getFollowList(shopId, );
+		getFollowList(shopId, getUnFollowList);
 	}
 }
