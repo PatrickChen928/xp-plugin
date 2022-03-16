@@ -54,7 +54,7 @@ function goFollow(offset, shopid) {
 
 function getUnFollowList(offset, shopid) {
 	return new Promise((r, j) => {
-		$.ajax('https://shopee.tw/shop/' + shopid + '/following/?offset=' + offset + '&limit=100&offset_of_offset=0&_=' + Date.now(), {
+		$.ajax('https://shopee.tw/shop/' + shopid + '/following/?offset=0&limit=100&offset_of_offset=0&_=' + Date.now(), {
     }).done(function(res) {
 			let arr = getUnfollowArr(res, false);
 			requestAll(arr, unfollow).then(() => {
